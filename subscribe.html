@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscribe</title>
+</head>
+<body onload="downloadFile()">
+
+<script>
+function downloadFile() {
+    const link = document.createElement('a');
+    link.href = '/mcca.yaml';
+    link.download = 'mcca.yaml';
+    document.body.appendChild(link);
+    link.click();
+}
+</script>
+
+</body>
+</html>
