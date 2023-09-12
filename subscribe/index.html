@@ -8,14 +8,10 @@
 
     <script>
         // 替换成你的 API URL
-        const apiUrl = 'https://justmysocks5.net/members/getbwcounter.php?service=531532&id=0ffb1cda-1854-43ec-88c2-8d63cd32f280';
+        const apiUrl = 'https://corsproxy.io/?https%3A%2F%2Fjustmysocks5.net%2Fmembers%2Fgetbwcounter.php%3Fservice%3D531532%26id%3D0ffb1cda-1854-43ec-88c2-8d63cd32f280';
         
         // 使用 fetch 发送 GET 请求获取数据
-        fetch(apiUrl, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest' // 添加 x-requested-with 头
-            }
-        })
+        fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
             // 处理从 API 返回的数据
