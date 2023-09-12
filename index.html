@@ -129,6 +129,14 @@
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 	<script>
+		// Service Worker
+		if ('serviceWorker' in navigator) {
+		    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+		        console.log('Service Worker registered with scope:', registration.scope);
+		    }).catch(function(error) {
+		        console.log('Service Worker registration failed:', error);
+		    });
+		}
 		// MenuToggle
 		let toggle = document.querySelector('.toggle');
 		let navigation = document.querySelector('.navigation');
