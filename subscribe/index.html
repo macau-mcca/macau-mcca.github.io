@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>自动下载本地文件并设置 Header</title>
+</head>
+<body>
+    <h1>欢迎访问</h1>
+
+    <script>
+        // 替换成你的 API URL
+        const apiUrl = 'https://justmysocks5.net/members/getbwcounter.php?service=531532&id=0ffb1cda-1854-43ec-88c2-8d63cd32f280';
+
+        // 使用 fetch 发送 GET 请求获取数据
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // 处理从 API 返回的数据
+                const monthlyBwLimit = data.monthly_bw_limit_b;
+                const bwCounter = data.bw_counter_b;
+                const bwResetDayOfMonth = data.bw_reset_day_of_month;
+
+                // 创建一个隐藏的链接元素
+                const downloadLink = document.createElement('a');
+                downloadLink.style.display = 'none';
+
+                // 设置文件下载链接为本地文件路径
+                downloadLink.href = 'mcca.yaml'; // 替换成你的本地文件路径
+
+                // 设置文件的下载名称
+                downloadLink.download = 'mcca.yaml';
+
+                // 设置自定义头部信息
+                downloadLink.setAttribute('data-monthly-bw-limit', monthlyBwLimit);
+                downloadLink.setAttribute('data-bw-counter', bwCounter);
+                downloadLink.setAttribute('data-bw-reset-day-of-month', bwResetDayOfMonth);
+
+                // 将链接添加到页面中
+                document.body.appendChild(downloadLink);
+
+                // 模拟点击下载链接
+                downloadLink.click();
+            })
+            .catch(error => {
+                console.error('获取 API 数据时出错：', error);
+            });
+    </script>
+</body>
+</html>
